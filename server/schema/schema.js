@@ -13,10 +13,11 @@ var books = [
 const BookType = new GraphQLObjectType({
     name: 'Book',
 
-    fields:() => ({
+    fields: () => ({
         id: {type: GraphQLString},
         name:{type: GraphQLString},
-        genre:{type: GraphQLString}})
+        genre:{type: GraphQLString}
+    })
     
 });
 
@@ -25,10 +26,10 @@ const RootQuery = new GraphQLObjectType({
     fields: {
         book:{
             type: BookType,
-            args:{id:{ type: GraphQLString}},
-            resolve(parent,args){
+            args: { id: { type: GraphQLString}},
+            resolve(parent, args){
                 //code to get data from db/other source
-                return _.find(books, { id: args.id });
+                return _.find(books, { id: args.id});
             }
         }
     }
